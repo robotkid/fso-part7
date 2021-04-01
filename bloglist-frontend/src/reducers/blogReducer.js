@@ -27,6 +27,16 @@ export const likeBlog = blog => {
   }
 }
 
+export const addComment = (blog, comment) => {
+  return async dispatch => {
+    const returnedBlog = await blogService.addComment(blog.id, comment)
+    dispatch({
+      type: 'UPDATE_BLOG',
+      blog: returnedBlog
+    })
+  }
+}
+
 
 export const createBlog = blog => {
   return async dispatch => {

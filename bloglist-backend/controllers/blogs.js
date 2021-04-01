@@ -9,6 +9,18 @@ blogsRouter.get('/', async (_request, response) => {
   response.json(blogs.map(blog => blog.toJSON()))
 })
 
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const blog = await Blog.findById(request.params.id)
+  const comment = request.body.comment
+  console.log(blog)
+  console.log(comment)
+  blog.comments.push(comment)
+  const returnedBlog = await Blog
+    .findByIdAndUpdate(request.params.id, blog, { new: true })
+    .populate('user')
+  response.json(returnedBlog.toJSON())
+})
+
 blogsRouter.get('/:id', async (request, response) => {
   const blog = await Blog.findById(request.params.id).populate('user')
   if (blog) {
@@ -66,7 +78,9 @@ blogsRouter.put('/:id', async (request, response) => {
     likes: body.likes
   }
 
-  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+  const updatedBlog = await Blog
+    .findByIdAndUpdate(request.params.id, blog, { new: true })
+    .populate('user')
   response.json(updatedBlog.toJSON())
 })
 

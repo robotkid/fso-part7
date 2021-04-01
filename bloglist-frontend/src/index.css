@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Poppins:wght@600&display=swap');
+
+body {
+  background-color: #f5f3f0;
+  color: #49585c;
+  
+  
+  font-family: 'PT Serif', serif;
+}
+
+.content {
+  padding-left: 20%
+}
+
+.loginDetails {
+  display: inline-flex;
+  margin-left: auto; 
+}
+
+.loginDetails > * {
+  margin: 0 5px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', sans-serif;
+  color: #49585c;
+}
+
+a {
+  color: #6945cb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .error {
   color: red;
   background: lightcoral;
